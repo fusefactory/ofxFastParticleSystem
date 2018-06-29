@@ -1,86 +1,97 @@
 # ofxFastParticleSystem
+ 
+OpenFrameworks addon for GPU particle system written in GLSL with the possibility to use different update shader.
 
-OpenFrameworks addon with _heavily opiniated_ tools for working with remote Depth Sensor streams.
+Based from the great addon https://github.com/neilmendoza/ofxGpuParticles, with the addiction to use separate udpate shader to be more clear and scalable.
 
-## What?
+This addons is the core used for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
 
-This is a suit of tools to work with multiple (different) depth sensors like the Kinect, the Orbbecs (Persee, Astra and Astra-mini) and -soon- the Intel RealSense.
+## Compatibility
 
-
-##### What about OpenNI??
-
-OpenNI provides a uniform API for working with various depth sensors and is used in some of the applications in this repository. The aim of this package is to provide high-level tools and instructions to work with remote depth sensors streaming over a network (currently using TCP).
-
+Tested with OpenFrameworks 0.9.8.
 
 
-## Instructions
+## Examples
 
-#### Build and run a remote Server
-See the ```./tools``` folder for various server (transmitter) applications for various platforms/sensors.
-Each tool has its own README;
- * [KinectForWindows2](tools/KinectForWindows2/README.md)
- * [OrbbecAstraTransmitter](tools/OrbbecAstraTransmitter/README.md)
- * [OrbbecPerseeTransmitter](tools/OrbbecPerseeTransmitter/README.md)
+See the examples:
 
-#### Build and run a local Client
-This OpenFrameworks addon tailors only to streaming _clients_ (receivers), try
-any of the example applications:
+- example-SimpleRandom
+- [TODO]
 
-```cd``` into one of the example application's folders and run:
-```bash
-make Debug # to build the applications
-make RunDebug # to run the last development-build
-```
+### example-SimpleRandom
 
-## SDK Usage
-See also the [API (doxygen) documentation](https://fusefactory.github.io/ofxDepthStream/docs/html/hierarchy.html)
+In this exapmle you can see how declare a particle system with two separate update shaders and one draw shader. You can add how many update and draw shaders you need.
 
-#### Basic Usage
-See also the example applications
+This is just an example to show you how use ofxFastParticleSystem.
+
+### How to use
+
+You can change the update shader pressing '0' or '1'.
+
+#### 1) Declare a const string to identify your shader
 
 ```c++
-#include "ofxDepthStream/ofxDepthStream.h"
-
-std::shared_ptr<depth::Receiver> receiverRef;
-ofTexture depthTexture;
-ofMesh mesh1;
-
-void ofApp::setup() {
-   // Create depth stream network receiver (takes a hostname/ip string and port number)
-   // this receiver instance will start a separate thread in which it listens for new frame data
-   receiverRef = depth::Receiver::createAndStart("persee.local", 4445);
-}
-
-void ofApp::update() {
-  // this addons provides some convenience methods for;
-  // ...processing raw frame byte data (which is compressed for network streaming)
-  depth::emptyAndInflateBuffer(*receiverRef, [this](const void* data, size_t size){
-
-    // ...loading texture data
-    ofxDepthStream::loadDepthTexture(this->depthTexture, data, size);
-
-    // ...loading mesh data
-    ofxDepthStream::loadMesh(this->mesh1, data, size);
-  }
-}
-
-void ofApp::draw() {
-  if(depthTexture.isAllocated()) {
-    depthTexture.draw(0,0);
-  }
-
-  mesh1.draw();
-}
-
-```
-#### Run unit tests
-From this addon's root folder;
-```shell
-cd tests
-make Debug
-make RunDebug
+const string CIRCLE = "circle";
 ```
 
-## Screenshots
-![Clients](screenshots/DualStreamOrbbecKinect2.png "Dual Stream with Orbbec [left] and Kinect [right] and")
-_streaming two sensors over a network; orbbec left, kinect right_
+#### 2) Add shader to particle system
+
+To add an update shader:
+
+```c++
+addUpdateShader(string shaderName, string key)
+```
+
+To add a draw shader:
+
+```c++
+addDrawShader(string shaderName, string key)
+```
+
+To add our *CIRCLE* update shader:
+
+```c++
+particles.addUpdateShader("shaders/updateParticlesCircle", CIRCLE);
+```
+
+#### 3) Retrive update shader
+
+On the update methed retrive the update shader you want use. If you don't specify the shaderKey, default update shader is used:
+
+```c++
+ofShader &shader = particles.getUpdateShader(CIRCLE);
+```
+
+```c++
+shader.begin();
+shader.setUniform2f("center", ofGetWidth() / 2.0, ofGetHeight() / 2.0);shader.setUniform1f("radius", 300);
+shader.setUniform1f("centerStiffness", 0.01);
+shader.setUniform1f("maxSpeed", 20);
+shader.end();
+```
+
+#### 4) Call update method
+
+```c++
+particles.update(CIRCLE);
+```
+
+#### 5) Retrive draw shader
+
+Like for udpate shader you have to retrive your draw shader:
+
+```c++
+ofShader &shader = particles.getDrawShader();
+```
+
+#### 6) Retrive draw shader
+
+To draw your particle system call the draw method
+
+```c++
+particles.draw();
+```
+
+### example-[TODO]
+
+TODO
