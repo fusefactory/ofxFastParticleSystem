@@ -2,14 +2,15 @@
  
 OpenFrameworks addon for GPU particle system written in GLSL with the possibility to use different update shader.
 
-Based from the great addon https://github.com/neilmendoza/ofxGpuParticles, with the addiction to use separate udpate shader to be more clear and scalable.
+Based from the great [ofxGpuParticleSystem](https://github.com/neilmendoza/ofxGpuParticles).
+
+With ofxFastParticleSystem we add the possibility to use separate udpate and draw shader to be more clear and scalable using separate shaders files.
 
 This addons is the core for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
 
 ## Compatibility
 
 Tested with OpenFrameworks 0.9.8.
-
 
 ## Examples
 
