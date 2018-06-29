@@ -25,7 +25,7 @@ In this exapmle you can see how declare a particle system with two separate upda
 
 This is just an example to show you how use ofxFastParticleSystem.
 
-### How to use
+#### How to use
 
 You can change the update shader pressing *0* or *1*.
 
@@ -90,6 +90,8 @@ To draw your particle system you have to call the draw method
 ```c++
 particles.draw();
 ```
+
+---
 
 ### example-[TODO]
 
