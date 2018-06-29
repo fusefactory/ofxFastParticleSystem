@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "FastParticleSystem.h"
+#include "ofxFastParticleSystem.h"
 
 class ofApp : public ofBaseApp{
 
@@ -25,5 +25,5 @@ class ofApp : public ofBaseApp{
     private:
         ofMatrix4x4 projection, modelView;
         FastParticleSystem particles;
-        bool defaultUpdateShader = true;
+        int shaderId = 0;
 };

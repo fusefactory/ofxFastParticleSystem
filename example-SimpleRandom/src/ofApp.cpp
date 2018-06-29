@@ -1,15 +1,18 @@
 #include "ofApp.h"
 
-const string TEST = "test";
+const string CIRCLE = "circle";
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    ofSetLogLevel(OF_LOG_VERBOSE);
+    ofBackground(0);
+    ofSetFrameRate(60);
+    
+//    ofSetLogLevel(OF_LOG_VERBOSE);
     
     //number of particles
-    unsigned w = 100;
-    unsigned h = 100;
+    unsigned w = 1000;
+    unsigned h = 1000;
     
     particles.init(w, h, ofPrimitiveMode::OF_PRIMITIVE_POINTS, 2);
 
@@ -43,8 +46,8 @@ void ofApp::setup(){
     particles.loadDataTexture(FastParticleSystem::VELOCITY, velocities);
     delete[] velocities;
     
-    particles.addUpdateShader("shaders/updateParticles");
-    particles.addUpdateShader("shaders/updateParticlesTest", TEST);
+    particles.addUpdateShader("shaders/updateParticlesRandom");
+    particles.addUpdateShader("shaders/updateParticlesCircle", CIRCLE);
     particles.addDrawShader("shaders/drawParticles");
     
     //MATRIX
@@ -58,29 +61,35 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    if (defaultUpdateShader){
-        ofShader &shader = particles.getUpdateShader();
-        shader.begin();
-        shader.setUniform1f("maxSpeed", 1.2);
-        shader.setUniform1f("width", ofGetWidth());
-        shader.setUniform1f("height", ofGetHeight());
-        
-        shader.end();
-        
-        particles.update();
+    switch (shaderId) {
+        case 0:{
+            ofShader &shader = particles.getUpdateShader();
+            shader.begin();
+            shader.setUniform1f("maxSpeed", 1.2);
+            shader.setUniform1f("width", ofGetWidth());
+            shader.setUniform1f("height", ofGetHeight());
+            
+            shader.end();
+            
+            particles.update();
+            break;
+        }
+        case 1:{
+            ofShader &shader = particles.getUpdateShader(CIRCLE);
+            shader.begin();
+            shader.setUniform2f("center", ofGetWidth() / 2.0, ofGetHeight() / 2.0);
+            shader.setUniform1f("radius", 300);
+            shader.setUniform1f("centerStiffness", 0.01);
+            shader.setUniform1f("maxSpeed", 20);
+            
+            shader.end();
+            
+            particles.update(CIRCLE);
+        }
+            
+        default:
+            break;
     }
-    else{
-        ofShader &shader = particles.getUpdateShader(TEST);
-        shader.begin();
-        shader.setUniform2f("center", ofGetWidth() / 2.0, ofGetHeight() / 2.0);
-        shader.setUniform1f("radius", 300);
-        shader.setUniform1f("centerStiffness", 0.01);
-        shader.setUniform1f("maxSpeed", 20);
-        
-        shader.end();
-        
-        particles.update(TEST);
-    }    
 }
 
 
@@ -100,13 +109,16 @@ void ofApp::draw(){
     particles.draw();
     glDisable(GL_PROGRAM_POINT_SIZE);
     glDisable(GL_BLEND);
+    
+    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), 100, 100, ofColor(255, 0, 0), ofColor(0));
+    ofDrawBitmapStringHighlight("Press '0' or '1' to switch shader update", 100, 150, ofColor(255, 0, 0), ofColor(0));
+    ofDrawBitmapStringHighlight("Current shader update: " + ofToString(shaderId), 100, 200, ofColor(255, 0, 0), ofColor(0));
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if (key == 'u'){
-        defaultUpdateShader = ! defaultUpdateShader;
-    }
+    if (key == '0') shaderId = 0;
+    else if (key == '1') shaderId = 1;
 }
 
 //--------------------------------------------------------------
