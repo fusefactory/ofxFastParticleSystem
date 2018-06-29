@@ -1,5 +1,5 @@
 /*
- *  FastParticleSystem.h
+ *  FastParticleSystem.cpp
  *
  *  Copyright (c) 2018, fuse*, http://fuseworks.it/
  *  All rights reserved. 

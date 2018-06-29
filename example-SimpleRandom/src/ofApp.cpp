@@ -46,8 +46,11 @@ void ofApp::setup(){
     particles.loadDataTexture(FastParticleSystem::VELOCITY, velocities);
     delete[] velocities;
     
+    //update shaders
     particles.addUpdateShader("shaders/updateParticlesRandom");
     particles.addUpdateShader("shaders/updateParticlesCircle", CIRCLE);
+    
+    //draw shader
     particles.addDrawShader("shaders/drawParticles");
     
     //MATRIX
