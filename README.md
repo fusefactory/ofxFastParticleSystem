@@ -4,7 +4,7 @@ OpenFrameworks addon for GPU particle system written in GLSL with the possibilit
 
 Based from the great addon https://github.com/neilmendoza/ofxGpuParticles, with the addiction to use separate udpate shader to be more clear and scalable.
 
-This addons is the core used for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
+This addons is the core for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
 
 ## Compatibility
 
@@ -26,7 +26,7 @@ This is just an example to show you how use ofxFastParticleSystem.
 
 ### How to use
 
-You can change the update shader pressing '0' or '1'.
+You can change the update shader pressing *0* or *1*.
 
 #### 1) Declare a const string to identify your shader
 
@@ -56,13 +56,11 @@ particles.addUpdateShader("shaders/updateParticlesCircle", CIRCLE);
 
 #### 3) Retrive update shader
 
-On the update methed retrive the update shader you want use. If you don't specify the shaderKey, default update shader is used:
+On the update methed retrive the update shader you want use. If you don't specify the *shaderKey*, default update shader is used:
 
 ```c++
 ofShader &shader = particles.getUpdateShader(CIRCLE);
-```
 
-```c++
 shader.begin();
 shader.setUniform2f("center", ofGetWidth() / 2.0, ofGetHeight() / 2.0);shader.setUniform1f("radius", 300);
 shader.setUniform1f("centerStiffness", 0.01);
@@ -86,7 +84,7 @@ ofShader &shader = particles.getDrawShader();
 
 #### 6) Retrive draw shader
 
-To draw your particle system call the draw method
+To draw your particle system you have to call the draw method
 
 ```c++
 particles.draw();
