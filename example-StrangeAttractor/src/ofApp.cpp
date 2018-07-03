@@ -34,7 +34,11 @@ void ofApp::setup(){
     width = ofGetWidth();
     height = ofGetHeight();
     
+#if (OF_VERSION_MINOR == 9)
+    cam.rotate(-90, ofVec3f(1.0,0.0, 0.0));
+#else
     cam.rotateDeg(-90, ofVec3f(1.0,0.0, 0.0));
+#endif
     cam.setDistance(cameraDist);
     
     cam.setNearClip(0.1);

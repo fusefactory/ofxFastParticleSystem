@@ -22,7 +22,12 @@
 int main( ){
     ofGLFWWindowSettings settings;
     settings.setGLVersion(4, 1);
+#if (OF_VERSION_MINOR == 9)
+    settings.width = 1920;
+    settings.height = 1080;
+#else
     settings.setSize(1920, 1080);
+#endif
     settings.numSamples = 4;
 
     ofCreateWindow(settings);

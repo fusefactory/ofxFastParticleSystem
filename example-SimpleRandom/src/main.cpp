@@ -18,13 +18,19 @@
 #include "ofMain.h"
 #include "ofApp.h"
 
+
 //========================================================================
 int main( ){
     ofGLFWWindowSettings settings;
     settings.glVersionMajor = 3;
     settings.glVersionMinor = 3;
     settings.windowMode = OF_WINDOW;
+    #if (OF_VERSION_MINOR == 9)
+    settings.width = 1700;
+    settings.height = 960;
+    #else
     settings.setSize(1700, 960);
+    #endif
     
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     mainWindow->setWindowTitle("FAST PARTICLE SYSTEM - EXAMPLE");
