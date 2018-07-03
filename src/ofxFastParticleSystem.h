@@ -1,8 +1,13 @@
 /*
  *  ofxFastParticleSytem.h
  *
- *  Copyright (c) 2018, fuse*, http://fuseworks.it/
- *  All rights reserved. 
+ *  This file is part of the ofxFastParticleSystem [https://github.com/fusefactory/ofxFastParticleSystem]
+ *  Copyright (C) 2018 Fuse srl
+ * 
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *  
  *  Redistribution and use in source and binary forms, with or without 
  *  modification, are permitted provided that the following conditions are met: 
