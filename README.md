@@ -17,7 +17,7 @@ Tested with OpenFrameworks 0.10.0.
 See the examples:
 
 - example-SimpleRandom
-- [TODO]
+- example-StrangeAttractor
 
 ### example-SimpleRandom
 
@@ -93,6 +93,6 @@ particles.draw();
 
 ---
 
-### example-[TODO]
+### example-StrangeAttractor
 
 TODO
