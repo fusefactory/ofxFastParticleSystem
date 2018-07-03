@@ -194,7 +194,7 @@ void FastParticleSystem::setUniforms(ofShader &shader) {
 }
 
 void FastParticleSystem::update(string shaderKey) {
-    fbos[1 - currentReadFbo].begin(false);
+    fbos[1 - currentReadFbo].begin(OF_FBOMODE_NODEFAULTS);
     glPushAttrib(GL_ENABLE_BIT);
     // we set up no camera model and ignore the modelview and projection matrices
     // in the vertex shader, we make a viewport large enough to ensure the shader
