@@ -10,7 +10,7 @@ This addons is the core for our interactive multimedia performance [Dökk](http:
 
 ## Compatibility
 
-Tested with OpenFrameworks 0.9.8.
+Tested with OpenFrameworks 0.10.0.
 
 ## Examples
 
