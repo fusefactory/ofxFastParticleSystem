@@ -95,4 +95,8 @@ particles.draw();
 
 ### example-StrangeAttractor
 
-TODO
+In this example you can see a interesting visualizazion with several million of particles.
+
+You can interact with the particle system with mouse x position.
+
+![StrangeAttractor](screenshots/strangeAttractors1.png "Example of Strange Attractor")
