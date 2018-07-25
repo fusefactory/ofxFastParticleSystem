@@ -54,11 +54,6 @@ public:
         VELOCITY,   // 1
     };
     
-    struct FastShader {
-        string key;
-        ofShader shader;
-    };
-    
     FastParticleSystem();
     void init(unsigned width, unsigned height, ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, unsigned numDataTextures = 2);
     void update(string shaderKey = UPDATE_SHADER);
