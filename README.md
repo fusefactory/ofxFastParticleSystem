@@ -1,12 +1,12 @@
 # ofxFastParticleSystem
- 
+
 OpenFrameworks addon for GPU particle system written in GLSL with the possibility to use different update shader.
 
-Based from the great [ofxGpuParticleSystem](https://github.com/neilmendoza/ofxGpuParticles).
+Based on the great [ofxGpuParticleSystem](https://github.com/neilmendoza/ofxGpuParticles).
 
-With ofxFastParticleSystem we add the possibility to use separate udpate and draw shader to be more clear and scalable using separate shaders files.
+With ofxFastParticleSystem, we add the possibility to use a separate update and draw shader to be more clear and scalable using separate shaders files.
 
-This addons is the core for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
+This addon is the core for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
 
 ## Compatibility
 
@@ -21,9 +21,9 @@ See the examples:
 
 ### example-SimpleRandom
 
-In this exapmle you can see how declare a particle system with two separate update shaders and one draw shader. You can add how many update and draw shaders you need.
+In this example, you can see how to declare a particle system with two separate update shaders and one draw shader. You can add how many update and draw shaders you need.
 
-This is just an example to show you how use ofxFastParticleSystem.
+This is just an example to show you how to use ofxFastParticleSystem.
 
 #### How to use
 
@@ -35,7 +35,7 @@ You can change the update shader pressing *0* or *1*.
 const string CIRCLE = "circle";
 ```
 
-#### 2) Add shader to particle system
+#### 2) Add the shader to the particle system
 
 To add an update shader:
 
@@ -55,9 +55,9 @@ To add our *CIRCLE* update shader:
 particles.addUpdateShader("shaders/updateParticlesCircle", CIRCLE);
 ```
 
-#### 3) Retrive update shader
+#### 3) Retrieve update shader
 
-On the update methed retrive the update shader you want use. If you don't specify the *shaderKey*, default update shader is used:
+On the update method retrieve the update shader you want to use. If you don't specify the *shaderKey*, the default update shader is used:
 
 ```c++
 ofShader &shader = particles.getUpdateShader(CIRCLE);
@@ -95,8 +95,10 @@ particles.draw();
 
 ### example-StrangeAttractor
 
-In this example you can see a interesting visualizazion with several million of particles.
+In this example, you can see an interesting visualization with several million particles.
 
 You can interact with the particle system with mouse x position.
 
 ![StrangeAttractor](screenshots/strangeAttractors1.png "Example of Strange Attractor")
+
+
