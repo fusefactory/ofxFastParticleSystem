@@ -6,7 +6,7 @@ Based on the great [ofxGpuParticleSystem](https://github.com/neilmendoza/ofxGpuP
 
 With ofxFastParticleSystem, we add the possibility to use a separate update and draw shader to be more clear and scalable using separate shaders files.
 
-This addon is the core for our interactive multimedia performance [Dökk](http://fuseworks.it/en/project/dokk-en/).
+This addon is the core for our interactive multimedia performance [Dökk](https://www.fuseworks.it/en/works/dokk/).
 
 ## Compatibility
 
