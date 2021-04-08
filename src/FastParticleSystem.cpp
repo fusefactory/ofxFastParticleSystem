@@ -73,16 +73,6 @@ void FastParticleSystem::init(unsigned width, unsigned height, ofPrimitiveMode p
         }
     }
     mesh.setMode(primitive);
-    
-    //line mesh with reduced particles
-    mesh_line.clear();
-    for (int y = 0; y < height/4.0; y++) {
-        for (int x = 0; x < width/4.0; x++) {
-            mesh_line.addVertex(ofVec3f(0, 0, 0));
-            mesh_line.addTexCoord(ofVec2f(x, y));
-        }
-    }
-    mesh_line.setMode(primitive);
 
     // quad mesh
     quadMesh.addVertex(ofVec3f(-1.f, -1.f, 0.f));
@@ -227,15 +217,12 @@ void FastParticleSystem::update(string shaderKey) {
     currentReadFbo = 1 - currentReadFbo;
 }
 
-void FastParticleSystem::draw(string shaderKey, bool line) {
+void FastParticleSystem::draw(string shaderKey) {
     ofShader &drawShader = drawShaders.at(shaderKey);
     drawShader.begin();
     
     setUniforms(drawShader);
-    if(line)
-        mesh_line.draw();
-    else
-        mesh.draw();
+    mesh.draw();
     drawShader.end();
 }
 

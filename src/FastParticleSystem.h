@@ -57,7 +57,7 @@ public:
     FastParticleSystem();
     void init(unsigned width, unsigned height, ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, unsigned numDataTextures = 2);
     void update(string shaderKey = UPDATE_SHADER);
-    void draw(string shaderKey = DRAW_SHADER, bool line = false);
+    void draw(string shaderKey = DRAW_SHADER);
     ofVboMesh &getMesh() { return mesh; }
     int getWidth();
     int getHeight();
@@ -89,7 +89,6 @@ private:
     unsigned currentReadFbo;
     
     ofVboMesh mesh;
-    ofVboMesh mesh_line;
     ofVboMesh quadMesh;
     
     map<string, ofShader> updateShaders;
