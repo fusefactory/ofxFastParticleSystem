@@ -29,7 +29,7 @@ void ofApp::setup(){
     
     //allocate fbo
     ofFbo::Settings settings;
-   settings.width = windowSize.x + EXTERNAL_WINDOW_WIDTH;
+   settings.width = windowSize.x;
    settings.height = windowSize.y;
    settings.internalformat = GL_RGB;
    mainFbo.allocate(settings);
@@ -143,7 +143,7 @@ void ofApp::draw(){
     mainFbo.end();
     
     //draw main window
-    mainFbo.getTexture().drawSubsection(0, 0, windowSize.x, windowSize.y, 0, 0, windowSize.x, windowSize.y);
+    mainFbo.getTexture().draw(0, 0, windowSize.x / 2.0, windowSize.y / 2.0f);
     
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), 100, 100, ofColor(255, 0, 0), ofColor(0));
     ofDrawBitmapStringHighlight("Press '0' or '1' to switch shader update", 100, 150, ofColor(255, 0, 0), ofColor(0));
@@ -155,7 +155,7 @@ void ofApp::drawExternalScreen(ofEventArgs &args) {
 
     ofClear(0);
     ofSetColor(255, 255);
-    mainFbo.getTexture().drawSubsection(0, 0, EXTERNAL_WINDOW_WIDTH, windowSize.y, windowSize.x, 0, EXTERNAL_WINDOW_WIDTH, windowSize.y);
+    mainFbo.getTexture().draw(0, 0, windowSize.x, windowSize.y);
     
     ofDrawBitmapStringHighlight("External: " + ofToString(ofGetFrameRate()), 100, 100, ofColor(255, 0, 0), ofColor(0));
 }

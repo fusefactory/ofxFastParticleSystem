@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "example-SimpleRandom-Multi-Window.app"
-               BlueprintName = "example-SimpleRandom-Multi-Window"
-               ReferencedContainer = "container:example-SimpleRandom-Multi-Window.xcodeproj">
+               BuildableName = "example-SimpleRandom-MultiWindow-ExternalApp.app"
+               BlueprintName = "example-SimpleRandom-MultiWindow-ExternalApp"
+               ReferencedContainer = "container:example-SimpleRandom-MultiWindow-ExternalApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "example-SimpleRandom-Multi-Window.app"
-            BlueprintName = "example-SimpleRandom-Multi-Window"
-            ReferencedContainer = "container:example-SimpleRandom-Multi-Window.xcodeproj">
+            BuildableName = "example-SimpleRandom-MultiWindow-ExternalApp.app"
+            BlueprintName = "example-SimpleRandom-MultiWindow-ExternalApp"
+            ReferencedContainer = "container:example-SimpleRandom-MultiWindow-ExternalApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "example-SimpleRandom-Multi-Window.app"
-            BlueprintName = "example-SimpleRandom-Multi-Window"
-            ReferencedContainer = "container:example-SimpleRandom-Multi-Window.xcodeproj">
+            BuildableName = "example-SimpleRandom-MultiWindow-ExternalApp.app"
+            BlueprintName = "example-SimpleRandom-MultiWindow-ExternalApp"
+            ReferencedContainer = "container:example-SimpleRandom-MultiWindow-ExternalApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "example-SimpleRandom-Multi-Window.app"
-            BlueprintName = "example-SimpleRandom-Multi-Window"
-            ReferencedContainer = "container:example-SimpleRandom-Multi-Window.xcodeproj">
+            BuildableName = "example-SimpleRandom-MultiWindow-ExternalApp.app"
+            BlueprintName = "example-SimpleRandom-MultiWindow-ExternalApp"
+            ReferencedContainer = "container:example-SimpleRandom-MultiWindow-ExternalApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

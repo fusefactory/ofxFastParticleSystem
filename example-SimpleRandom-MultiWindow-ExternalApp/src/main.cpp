@@ -17,46 +17,54 @@
 
 #include "ofMain.h"
 #include "ofApp.h"
+#include "ExternalApp.hpp"
 
 //========================================================================
 int main( ){
-    //hardcodec
+    //hardcoded
     ofVec2f windowSize(1920, 1080);
 
-    
     ofGLFWWindowSettings settings;
     settings.glVersionMajor = 3;
     settings.glVersionMinor = 3;
     settings.windowMode = OF_WINDOW;
     #if (OF_VERSION_MINOR == 9)
-    settings.width = windowSize.x;
-    settings.height = windowSize.y;
+    settings.width = windowSize.x  / 2.0f;
+    settings.height = windowSize.y  / 2.0f;
     #else
-    settings.setSize(windowSize.x, windowSize.y);
+    settings.setSize(windowSize.x / 2.0f, windowSize.y  / 2.0f);
     #endif
     
-    shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
-    mainWindow->setWindowTitle("MAIN SCREEN");
-    shared_ptr<ofApp> mainApp(new ofApp);
-    mainApp->windowSize.x = windowSize.x;
-    mainApp->windowSize.y = windowSize.y;
+    //MAIN WINDOW
+    shared_ptr<ofAppBaseWindow> mainWindow = ofGetMainLoop()->createWindow(settings);
+    mainWindow->setWindowTitle("example-SimpleRandom-MultiWindow-ExternalApp | MAIN SCREEN");
+    
+    //external settings settings
+    settings.shareContextWith = mainWindow;
+    settings.resizable = false;
 
-    //external screen
     #if (OF_VERSION_MINOR == 9)
     settings.width = EXTERNAL_WINDOW_WIDTH;
     settings.height = windowSize.y;
     #else
     settings.setSize(EXTERNAL_WINDOW_WIDTH, windowSize.y);
     #endif
-    settings.shareContextWith = mainWindow;
-    settings.resizable = false;
-    settings.decorated = true;
     
-    shared_ptr<ofAppBaseWindow> externalWindow = ofCreateWindow(settings);
-    externalWindow->setWindowTitle("EXTERNAL SCREEN");
-    externalWindow->setWindowPosition(windowSize.x, 0);
-    ofAddListener(externalWindow->events().draw, mainApp.get(), &ofApp::drawExternalScreen);
+    //EXTERNAL WINDOW
+    shared_ptr<ofAppBaseWindow> windowExt = ofCreateWindow(settings);
+    windowExt->setWindowTitle("example-SimpleRandom-MultiWindow-ExternalApp | EXTERNAL SCREEN");
+    windowExt->setWindowPosition(windowSize.x, 0);
+    
+    shared_ptr<ofApp> mainApp(new ofApp);
+    shared_ptr<ExternalApp> externalApp(new ExternalApp);
+    mainApp->windowSize = windowSize;
 
-    ofRunApp(mainWindow, mainApp);
+    ofRunApp(mainWindow, mainApp);          //execute setup
+    ofRunApp(windowExt, externalApp);
+    
+    externalApp->gl = static_pointer_cast<ofGLRenderer>(windowExt->renderer());
+    externalApp->screenTex = mainApp->mainFbo.getTexture();
+    externalApp->windowId = 1;
+    
     ofRunMainLoop();
 }

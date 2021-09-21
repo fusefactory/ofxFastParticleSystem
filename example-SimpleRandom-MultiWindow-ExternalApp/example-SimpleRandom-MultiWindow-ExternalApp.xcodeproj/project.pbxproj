@@ -89,6 +89,43 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
+			<key>356F057F58FE49F6389C0168</key>
+			<dict>
+				<key>fileRef</key>
+				<string>83299BF5FA6D278D4EC3D636</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>83299BF5FA6D278D4EC3D636</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ExternalApp.cpp</string>
+				<key>path</key>
+				<string>src/ExternalApp.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>5CDFB2D163805EC2FB210557</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>4</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>ExternalApp.hpp</string>
+				<key>path</key>
+				<string>src/ExternalApp.hpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
 			<key>6948EE371B920CB800B5AC1A</key>
 			<dict>
 				<key>children</key>
@@ -3192,6 +3229,7 @@ fi
 				<array>
 					<string>E4B69E200A3A1BDC003C02F2</string>
 					<string>E4B69E210A3A1BDC003C02F2</string>
+					<string>356F057F58FE49F6389C0168</string>
 					<string>34C665576F94F755802CB889</string>
 				</array>
 				<key>isa</key>
@@ -3232,7 +3270,7 @@ fi
 				<key>isa</key>
 				<string>PBXNativeTarget</string>
 				<key>name</key>
-				<string>example-SimpleRandom-Multi-Window</string>
+				<string>example-SimpleRandom-MultiWindow-ExternalApp</string>
 				<key>productName</key>
 				<string>myOFApp</string>
 				<key>productReference</key>
@@ -3249,7 +3287,7 @@ fi
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>path</key>
-				<string>example-SimpleRandom-Multi-WindowDebug.app</string>
+				<string>example-SimpleRandom-MultiWindow-ExternalAppDebug.app</string>
 				<key>sourceTree</key>
 				<string>BUILT_PRODUCTS_DIR</string>
 			</dict>
@@ -3385,6 +3423,8 @@ fi
 					<string>E4B69E1D0A3A1BDC003C02F2</string>
 					<string>E4B69E1E0A3A1BDC003C02F2</string>
 					<string>E4B69E1F0A3A1BDC003C02F2</string>
+					<string>5CDFB2D163805EC2FB210557</string>
+					<string>83299BF5FA6D278D4EC3D636</string>
 				</array>
 				<key>isa</key>
 				<string>PBXGroup</string>
