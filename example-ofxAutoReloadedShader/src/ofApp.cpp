@@ -66,7 +66,7 @@ void ofApp::setup(){
     delete[] velocities;
     
     //update shaders
-    ofxAutoReloadedShader updateShader = new ofxAutoReloadedShader();
+    ofxAutoReloadedShader *updateShader = new ofxAutoReloadedShader();
     updateShader->load("shaders/updateParticlesRandom");
     particles.addUpdateShader(*updateShader, FastParticleSystem::UPDATE_SHADER);
     
