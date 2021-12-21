@@ -123,43 +123,50 @@ ofFbo &FastParticleSystem::getCurrentWriteFbo() {
 
 void FastParticleSystem::addUpdateShader(string shaderName, string key) {
     ofShader shader;
-    shader.load(shaderName);
     updateShaders.insert({ key, shader });
+    
+    ofShader &shaderRef = getUpdateShader(key);
+    shaderRef.load(shaderName);
 }
 
 void FastParticleSystem::addUpdateShader(string vertName, string geomName, string fragName, string key) {
     ofShader shader;
-    shader.load(vertName, fragName, geomName);
     updateShaders.insert({ key, shader });
+    
+    ofShader &shaderRef = getUpdateShader(key);
+    shaderRef.load(vertName, fragName, geomName);
 }
 
 void FastParticleSystem::addDrawShader(string shaderName, string key) {
     ofShader shader;
-    shader.load(shaderName);
     drawShaders.insert({ key, shader });
+    
+    ofShader &shaderRef = getDrawShader(key);
+    shaderRef.load(shaderName);
 }
 
 void FastParticleSystem::addDrawShader(ofShader &shader, string key) {
-    drawShaders.insert({ key, shader });
+    drawShaders.insert({ key, shader });    //warning: this creates a copy of the object
 }
 
 void FastParticleSystem::replaceDrawShader(ofShader &shader, string key) {
-    drawShaders.at(key) = shader;
+    drawShaders.at(key) = shader;            //warning: this creates a copy of the object
 }
 
 void FastParticleSystem::addUpdateShader(ofShader &shader, string key) {
-    updateShaders.insert({ key, shader });
+    updateShaders.insert({ key, shader });   //warning: this creates a copy of the object
 }
 
 void FastParticleSystem::replaceUpdateShader(ofShader &shader, string key) {
-    updateShaders.at(key) = shader;
+    updateShaders.at(key) = shader;          //warning: this creates a copy of the object
 }
-
 
 void FastParticleSystem::addDrawShader(string vertName, string geomName, string fragName, string key) {
     ofShader shader;
-    shader.load(vertName, fragName, geomName);
     drawShaders.insert({ key, shader });
+    
+    ofShader &shaderRef = getDrawShader(key);
+    shaderRef.load(vertName, fragName, geomName);
 }
 
 ofShader& FastParticleSystem::getUpdateShader(string shaderKey) {
