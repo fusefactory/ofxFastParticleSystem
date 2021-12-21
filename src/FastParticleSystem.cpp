@@ -122,49 +122,47 @@ ofFbo &FastParticleSystem::getCurrentWriteFbo() {
 }
 
 void FastParticleSystem::addUpdateShader(string shaderName, string key) {
-    auto shader = make_unique<ofShader>();
+    auto shader = new ofShader();
     shader->load(shaderName);
-    updateShaders.insert({ key, move(shader) });
+    updateShaders.insert({ key, shader });
 }
 
 void FastParticleSystem::addUpdateShader(string vertName, string geomName, string fragName, string key) {
-    auto shader = make_unique<ofShader>();
+    auto shader = new ofShader();
     shader->load(vertName, fragName, geomName);
-    updateShaders.insert({ key, move(shader) });
+    updateShaders.insert({ key, shader });
 }
 
 void FastParticleSystem::addDrawShader(string shaderName, string key) {
-    auto shader = make_unique<ofShader>();
+    auto shader = new ofShader();
     shader->load(shaderName);
-    drawShaders.insert({ key, move(shader) });
+    drawShaders.insert({ key, shader });
 }
 
-void FastParticleSystem::addDrawShader(unique_ptr<ofShader> &shader, string key) {
-    drawShaders.insert({ key, move(shader) });
+void FastParticleSystem::addDrawShader(ofShader &shader, string key) {
+    drawShaders.insert({ key, &shader });
 }
 
 void FastParticleSystem::replaceDrawShader(ofShader &shader, string key) {    
     *drawShaders.at(key) = shader;
 }
 
-void FastParticleSystem::addUpdateShader(unique_ptr<ofShader> &shader, string key) {
-    updateShaders.insert({ key, move(shader) });
+void FastParticleSystem::addUpdateShader(ofShader &shader, string key) {
+    updateShaders.insert({ key, &shader });
 }
 
 void FastParticleSystem::replaceUpdateShader(ofShader &shader, string key) {
-    //TODO: delete memory
     *updateShaders.at(key) = shader;
 }
 
 void FastParticleSystem::addDrawShader(string vertName, string geomName, string fragName, string key) {
-    auto shader = make_unique<ofShader>();
+    auto shader = new ofShader();
     shader->load(vertName, fragName, geomName);
-    drawShaders.insert({ key, move(shader) });
+    drawShaders.insert({ key, shader });
 }
 
 ofShader& FastParticleSystem::getUpdateShader(string shaderKey) {
     return *(updateShaders.at(shaderKey));
-    
 }
 
 ofShader& FastParticleSystem::getDrawShader(string shaderKey) {
