@@ -66,18 +66,18 @@ void ofApp::setup(){
     delete[] velocities;
     
     //update shaders
-    std::unique_ptr<ofShader> updateShader = make_unique<ofxAutoReloadedShader>();
+    ofxAutoReloadedShader updateShader = new ofxAutoReloadedShader();
     updateShader->load("shaders/updateParticlesRandom");
-    particles.addUpdateShader(updateShader, FastParticleSystem::UPDATE_SHADER);
+    particles.addUpdateShader(*updateShader, FastParticleSystem::UPDATE_SHADER);
     
-    std::unique_ptr<ofShader> updateShader2 = make_unique<ofxAutoReloadedShader>();
+    ofxAutoReloadedShader *updateShader2 = new ofxAutoReloadedShader();
     updateShader2->load("shaders/updateParticlesCircle");
-    particles.addUpdateShader(updateShader2, CIRCLE);
+    particles.addUpdateShader(*updateShader2, CIRCLE);
     
     //draw shader
-    std::unique_ptr<ofShader> drawShader = make_unique<ofxAutoReloadedShader>();
+    ofxAutoReloadedShader *drawShader = new ofxAutoReloadedShader();
     drawShader->load("shaders/drawParticles");
-    particles.addDrawShader(drawShader, FastParticleSystem::DRAW_SHADER);
+    particles.addDrawShader(*drawShader, FastParticleSystem::DRAW_SHADER);
     
     //MATRIX
     projection.makeIdentityMatrix();
