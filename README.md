@@ -18,6 +18,7 @@ See the examples:
 
 - example-SimpleRandom
 - example-StrangeAttractor
+- example-ofxAutoRealoadedShader
 
 ### example-SimpleRandom
 
@@ -102,3 +103,8 @@ You can interact with the particle system with mouse x position.
 ![StrangeAttractor](screenshots/strangeAttractors1.png "Example of Strange Attractor")
 
 
+--- 
+
+### example-ofxAutoReloadedShader
+
+This is an example to use [ofxAutoReloadedShader](https://github.com/fusefactory/ofxAutoReloadedShader). This addon can reload a shader at runtime.
