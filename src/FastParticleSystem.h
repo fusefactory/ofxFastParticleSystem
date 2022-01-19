@@ -64,14 +64,13 @@ public:
     
     void addUpdateShader(string shaderName, string key = UPDATE_SHADER);
     void addUpdateShader(string vertName, string geomName, string fragName, string key = UPDATE_SHADER);
-    void addDrawShader(string shaderName, string key = DRAW_SHADER);
-    void addDrawShader(string vertName, string geomName, string fragName, string key = DRAW_SHADER);
-
-    void addDrawShader(ofShader &shader, string key);
-    void replaceDrawShader(ofShader &shader, string key);
-    
     void addUpdateShader(ofShader &shader, string key);
     void replaceUpdateShader(ofShader &shader, string key);
+
+    void addDrawShader(string shaderName, string key = DRAW_SHADER);
+    void addDrawShader(string vertName, string geomName, string fragName, string key = DRAW_SHADER);
+    void addDrawShader(ofShader &shader, string key);
+    void replaceDrawShader(ofShader &shader, string key);
     
     void loadDataTexture(unsigned index, float *data, unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
     void zeroDataTexture(unsigned index, unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
@@ -92,8 +91,8 @@ private:
     ofVboMesh mesh_line;
     ofVboMesh quadMesh;
     
-    map<string, ofShader> updateShaders;
-    map<string, ofShader> drawShaders;
+    map<string, ofShader*> updateShaders;
+    map<string, ofShader*> drawShaders;
     
     void setUniforms(ofShader &shader);
 };

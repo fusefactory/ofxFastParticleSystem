@@ -122,52 +122,51 @@ ofFbo &FastParticleSystem::getCurrentWriteFbo() {
 }
 
 void FastParticleSystem::addUpdateShader(string shaderName, string key) {
-    ofShader shader;
-    shader.load(shaderName);
+    auto shader = new ofShader();
+    shader->load(shaderName);
     updateShaders.insert({ key, shader });
 }
 
 void FastParticleSystem::addUpdateShader(string vertName, string geomName, string fragName, string key) {
-    ofShader shader;
-    shader.load(vertName, fragName, geomName);
+    auto shader = new ofShader();
+    shader->load(vertName, fragName, geomName);
     updateShaders.insert({ key, shader });
 }
 
 void FastParticleSystem::addDrawShader(string shaderName, string key) {
-    ofShader shader;
-    shader.load(shaderName);
+    auto shader = new ofShader();
+    shader->load(shaderName);
     drawShaders.insert({ key, shader });
 }
 
 void FastParticleSystem::addDrawShader(ofShader &shader, string key) {
-    drawShaders.insert({ key, shader });
+    drawShaders.insert({ key, &shader });
 }
 
-void FastParticleSystem::replaceDrawShader(ofShader &shader, string key) {
-    drawShaders.at(key) = shader;
+void FastParticleSystem::replaceDrawShader(ofShader &shader, string key) {    
+    *drawShaders.at(key) = shader;
 }
 
 void FastParticleSystem::addUpdateShader(ofShader &shader, string key) {
-    updateShaders.insert({ key, shader });
+    updateShaders.insert({ key, &shader });
 }
 
 void FastParticleSystem::replaceUpdateShader(ofShader &shader, string key) {
-    updateShaders.at(key) = shader;
+    *updateShaders.at(key) = shader;
 }
 
-
 void FastParticleSystem::addDrawShader(string vertName, string geomName, string fragName, string key) {
-    ofShader shader;
-    shader.load(vertName, fragName, geomName);
+    auto shader = new ofShader();
+    shader->load(vertName, fragName, geomName);
     drawShaders.insert({ key, shader });
 }
 
 ofShader& FastParticleSystem::getUpdateShader(string shaderKey) {
-    return updateShaders.at(shaderKey);
+    return *(updateShaders.at(shaderKey));
 }
 
 ofShader& FastParticleSystem::getDrawShader(string shaderKey) {
-    return drawShaders.at(shaderKey);
+    return *drawShaders.at(shaderKey);
 }
 
 void FastParticleSystem::loadDataTexture(unsigned index, float *data, unsigned x, unsigned y, unsigned width, unsigned height) {
@@ -214,7 +213,7 @@ void FastParticleSystem::update(string shaderKey) {
     ofSetColor(255);
     fbos[1 - currentReadFbo].activateAllDrawBuffers();
     
-    ofShader &updateShader = updateShaders.at(shaderKey);
+    ofShader &updateShader = getUpdateShader(shaderKey);
     updateShader.begin();
     
     setUniforms(updateShader);
@@ -228,7 +227,7 @@ void FastParticleSystem::update(string shaderKey) {
 }
 
 void FastParticleSystem::draw(string shaderKey, bool line) {
-    ofShader &drawShader = drawShaders.at(shaderKey);
+    ofShader &drawShader = getDrawShader(shaderKey);
     drawShader.begin();
     
     setUniforms(drawShader);
