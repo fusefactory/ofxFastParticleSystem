@@ -108,3 +108,9 @@ You can interact with the particle system with mouse x position.
 ### example-ofxAutoReloadedShader
 
 This is an example to use [ofxAutoReloadedShader](https://github.com/fusefactory/ofxAutoReloadedShader). This addon can reload a shader at runtime.
+
+
+
+### example-ofxAutoReloadedShaderGeom
+
+This is an example to use [ofxAutoReloadedShader](https://github.com/fusefactory/ofxAutoReloadedShader) and it shows how use geometry shader. 
